@@ -1,0 +1,14 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+    "FUNCTIONS_WORKER_RUNTIME_VERSION": "~7",
+    "FUNCTIONS_WORKER_RUNTIME": "powershell",
+    "AZURE_STORAGE_CONNECTION_STRING": "FILL OUT YOUR VALUE",
+    "AZURE_SP_APP_ID": "FILL OUT YOUR VALUE",
+    "AZURE_SP_PASSWORD": "FILL OUT YOUR VALUE",
+    "AZURE_SP_TENANT": "FILL OUT YOUR VALUE",
+    "ACI_RESOURCE_GROUP_NAME": "ovaas2aciRG",
+    "ACI_CONTAINER_GROUP_NAME": "deploysrccode"
+  }
+}
