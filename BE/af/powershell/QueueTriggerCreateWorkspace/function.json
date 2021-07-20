@@ -1,0 +1,11 @@
+{
+  "bindings": [
+    {
+      "name": "QueueItem",
+      "type": "queueTrigger",
+      "direction": "in",
+      "queueName": "queue-deploy-workspace",
+      "connection": "AZURE_STORAGE_CONNECTION_STRING"
+    }
+  ]
+}
