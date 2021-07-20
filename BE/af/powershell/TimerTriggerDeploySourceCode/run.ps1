@@ -9,11 +9,6 @@ if ($Timer.IsPastDue) {
     Write-Host "PowerShell timer is running late!"
 }
 
-# Parse Input data
-$AZURE_FUNCTIONS_NAME = "ovaas2func"
-$SRC_URL = "https://hiouchiystorage.blob.core.windows.net/share/code.zip"
-Write-Host "PowerShell timer trigger function starts with work item: $AZURE_FUNCTIONS_NAME,$SRC_URL"
-
 # Login Azure with service principal
 $appId = $env:AZURE_SP_APP_ID
 $secret = $env:AZURE_SP_PASSWORD
@@ -46,7 +41,7 @@ if ($notPresentAci)
     New-AzContainerGroup -ResourceGroupName $env:ACI_RESOURCE_GROUP_NAME -Name $env:ACI_CONTAINER_GROUP_NAME `
         -Image mcr.microsoft.com/azure-cli/tools -OsType Linux `
         -IpAddressType Public `
-        -Command "/bin/bash -c ""az login --service-principal --username $env:AZURE_SP_APP_ID --password $env:AZURE_SP_PASSWORD --tenant $env:AZURE_SP_TENANT && cd && wget https://hiouchiystorage.blob.core.windows.net/share/deploy.sh && sh deploy.sh $AZURE_FUNCTIONS_NAME $SRC_URL && cd""" `
+        -Command "/bin/bash -c ""az login --service-principal --username $env:AZURE_SP_APP_ID --password $env:AZURE_SP_PASSWORD --tenant $env:AZURE_SP_TENANT && cd && git clone https://github.com/hiouchiy/ovaas2-dev.git && cd ovaas2-dev/BE/aci && source DeploySourceCode.sh && cd""" `
         -RestartPolicy OnFailure
 }
 
